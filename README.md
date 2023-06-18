@@ -11,5 +11,5 @@ You can check the bundle's README.md for the features list and configurations.
 4.  Create the main DB using `symfony console d:d:create`
 5.  Migrate the current migration files to your main db using `symfony console d:m:m`
 6.  Create a new tenant by calling `create-tenant` route,This will create add a new tenant db to tenantdbConfig entity
-7.  Exceute `symfony console t:d:c  with $tenantdbName` to create and migrate the new database 
+7.  Exceute `symfony console t:d:c  ` to create and migrate the new database added in the previous step 
 8.  Call `update-tenant-store` route to add a new store category to your new tenant Db       

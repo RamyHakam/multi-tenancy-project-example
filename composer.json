@@ -7,7 +7,7 @@
         "php": ">=8.1",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "hakam/multi-tenancy-bundle": "2.5.*",
+        "hakam/multi-tenancy-bundle": "2.5.1",
         "symfony/console": "6.2.*",
         "symfony/dotenv": "6.2.*",
         "symfony/flex": "^2",

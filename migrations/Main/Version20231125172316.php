@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20230901191939 extends AbstractMigration
+final class Version20231125172316 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,12 +20,12 @@ final class Version20230901191939 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE tenant_db_config ADD database_status VARCHAR(255) DEFAULT \'DATABASE_NOT_CREATED\' NOT NULL');
+        $this->addSql('ALTER TABLE tenant_db_config ADD db_host VARCHAR(255) DEFAULT NULL, ADD db_port VARCHAR(5) DEFAULT NULL');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE tenant_db_config DROP database_status');
+        $this->addSql('ALTER TABLE tenant_db_config DROP db_host, DROP db_port');
     }
 }

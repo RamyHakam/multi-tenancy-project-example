@@ -22,8 +22,8 @@ class MultiTenantExampleController extends AbstractController
     ) {}
 
     #[Route('/create-tenant', name: 'create_db')]
-      public function createTenant(EntityManagerInterface $entityManager)
-      {
+      public function createTenant(EntityManagerInterface $entityManager): JsonResponse
+    {
           //example of creating a new tenant
           $tenant = new TenantUser();
           $tenant->setEmail('test@test.com');

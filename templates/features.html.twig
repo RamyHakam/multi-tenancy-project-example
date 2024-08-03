@@ -1,0 +1,247 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Multi Tenancy Bundle Features{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center mb-5">Features of Multi Tenancy Bundle</h1>
+
+        <!-- Flash Messages -->
+        {% for label, messages in app.flashes %}
+            <div class="alert alert-{{ label }}">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ asset('images/feature1.png') }}" class="card-img-top feature-image" alt="Feature 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Switch db on runtime</h5>
+                        <p class="card-text">Switch to any Tenant DB as like as fire an event, manage Tenant Entities, migrations, fixtures, independently from the main db.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ asset('images/feature2.png') }}" class="card-img-top feature-image" alt="Feature 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Auto Create Bulk Dbs with Cron</h5>
+                        <p class="card-text">To build a new Tenant DB on any host, and prepare it for instance usage.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ asset('images/feature3.png') }}" class="card-img-top feature-image" alt="Feature 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Extended Doctrine Commands</h5>
+                        <p class="card-text">You can use Extended Doctrine commands to manage your Tenant DB exactly like the single DB apps.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ asset('images/feature4.png') }}" class="card-img-top feature-image" alt="Feature 4">
+                    <div class="card-body">
+                        <h5 class="card-title">Based On Docker</h5>
+                        <p class="card-text">You can run the system and restart it with simple commands; you will have the complete setup, main and tenants.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ asset('images/feature5.png') }}" class="card-img-top feature-image" alt="Feature 5">
+                    <div class="card-body">
+                        <h5 class="card-title">Make Commands for Docker</h5>
+                        <p class="card-text">Provide Make commands to easily run commands inside Docker containers like tenant migration or create.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ asset('images/feature6.png') }}" class="card-img-top feature-image" alt="Feature 6">
+                    <div class="card-body">
+                        <h5 class="card-title">UI Example for Tenant Management</h5>
+                        <p class="card-text">Use UI Example to manage tenant entities and test the features; add data in any tenant DB, create a new tenant DB with UI.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- New Section: Add New Tenant DB -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <h2 class="text-center">Add New Tenant DB</h2>
+                <div class="bg-light p-3 rounded">
+                    <ul class="list-unstyled">
+                        <li class="text-center mt-3" style="font-size: 1.25em;">
+                            <i class="fas fa-list-ul"></i>
+                            <strong>You can add a new tenant DB into any existing tenant host or add a new tenant host.</strong>
+                        </li>
+                        <li class="text-center mt-3" style="font-size: 1.25em;">
+                            <i class="fas fa-list-ul"></i>
+                            <strong>You should wait between 1-2 minutes to allow cron to detect and create the newly created DB.</strong>
+                        </li>
+                        <li class="text-center mt-3" style="font-size: 1.25em;">
+                            <i class="fas fa-list-ul"></i>
+                            <strong>Ensure that cron is working inside your Docker to create the tenant DB automatically.</strong>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+
+        <!-- Forms for Adding New Tenant DB -->
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <h3>Step 1: Tenant DB Config</h3>
+                <p class="text-center mt-3" style="font-size: 1.25em;">All current tenant hosts are from Docker containers for testing. You can replace it with any host or IP.</p>
+                {{ form_start(tenantDbForm) }}
+                {{ form_widget(tenantDbForm) }}
+                {{ form_end(tenantDbForm) }}
+            </div>
+            <div class="col-md-6">
+                <h3>Step 2: Tenant User</h3>
+                <p class="text-center mt-3" style="font-size: 1.25em;">This tenant user will be added to the newly created tenant DB.</p>
+                {{ form_start(tenantUserForm) }}
+                {{ form_widget(tenantUserForm) }}
+                {{ form_end(tenantUserForm) }}
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <!-- New Section: Add Store Category -->
+                <h2 class="text-center">Add New Store Category</h2>
+                {{ form_start(storeCategoryForm) }}
+                {{ form_widget(storeCategoryForm) }}
+                {{ form_end(storeCategoryForm) }}
+            </div>
+            <div class="col-md-6">
+                <!-- New Section: List Store Categories -->
+                <h2 class="text-center">List Store Categories</h2>
+                {{ form_start(listStoreCategoriesForm, {'attr': {'id': 'listStoreCategoriesForm'}}) }}
+                {{ form_widget(listStoreCategoriesForm) }}
+                {{ form_end(listStoreCategoriesForm) }}
+            </div>
+        </div>
+        <hr>
+        <hr>
+
+        <div class="row mt-3" id="storeCategoriesTable" style="display: none;">
+            <div class="col-12">
+                <h3 class="text-center">Store Categories</h3>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Category Name</th>
+                    </tr>
+                    </thead>
+                    <tbody id="storeCategoriesTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container text-center">
+            <span class="text-muted">Author: Ramy Hakam | <a href="https://github.com/RamyHakam/multi_tenancy_bundle" target="_blank">GitHub Repository</a></span>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('listStoreCategoriesForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            fetch('{{ path('category_list') }}', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.getElementById('storeCategoriesTableBody');
+                    tableBody.innerHTML = '';
+
+                    if (data.error) {
+                        alert(data.error);
+                    } else {
+                        data.forEach(category => {
+                            const row = document.createElement('tr');
+                            row.innerHTML = `<td>${category.id}</td><td>${category.categoryName}</td>`;
+                            tableBody.appendChild(row);
+                        });
+
+                        document.getElementById('storeCategoriesTable').style.display = 'block';
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    </script>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .feature-image {
+            height: 200px;
+            object-fit: cover;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+        .container {
+            margin-top: 30px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        .form-group small {
+            font-size: 0.9em;
+        }
+        .text-center img {
+            max-height: 800px;
+            width: 100%;
+        }
+        .p-4 {
+            padding: 1.5rem !important;
+        }
+        .border {
+            border: 1px solid #ced4da !important;
+        }
+        .rounded {
+            border-radius: .25rem !important;
+        }
+        .alert {
+            margin-top: 20px;
+        }
+        .footer {
+            background-color: #f8f9fa;
+            padding: 20px 0;
+        }
+        .footer .container {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        .footer a {
+            color: #6c757d;
+        }
+        .footer a:hover {
+            color: #0056b3;
+            text-decoration: none;
+        }
+    </style>
+{% endblock %}

@@ -75,13 +75,17 @@ This repository provides a simple example of using the [Multi Tenancy Bundle](ht
 7. **Open the project in your browser:** [http://localhost:80](http://localhost:80)
 
     - You will see the main page with a list of features.
-      ![Main Page](../path/to/main-page-screenshot.png)
+      <img width="1271" alt="Screenshot 2024-08-03 at 19 41 51" src="https://github.com/user-attachments/assets/02017ce2-c10a-4aa6-b45c-e19b4974a1bd">
+
 
     - You can manage tenant entities and create new tenant databases.
-      ![Tenant Management](../path/to/tenant-management-screenshot.png)
+      <img width="1271" alt="Screenshot 2024-08-03 at 19 42 03" src="https://github.com/user-attachments/assets/9285176b-8c6a-4275-8d63-3b3b7633bb46">
 
-    - You can add Store Category to any tenant database and verify that the data is saved in the tenant database.
-      ![Store Category](../path/to/store-category-screenshot.png)
+
+    - You can add a Store Category to any tenant database and verify that the data is saved in the tenant database.
+      <img width="1226" alt="Screenshot 2024-08-03 at 21 33 17" src="https://github.com/user-attachments/assets/ecc8bc90-2d12-4341-a615-44b6acf6aeaa">
+
+      
 
 ## Notes and Considerations
 

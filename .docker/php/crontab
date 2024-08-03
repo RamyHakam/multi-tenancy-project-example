@@ -1,0 +1,1 @@
+* * * * *  /usr/local/bin/create-tenant-db.sh >> /var/log/cron.log 2>&1

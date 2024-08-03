@@ -1,0 +1,7 @@
+FROM postgres:13
+
+ENV POSTGRES_USER=admin
+ENV POSTGRES_PASSWORD=admin@123
+ENV POSTGRES_DB=multi_tenancy
+
+EXPOSE 5432

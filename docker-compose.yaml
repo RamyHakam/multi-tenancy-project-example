@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  composer:
+    image: composer:latest
+    restart: "no"
+    volumes:
+      - ./:/app
+    working_dir: /app
+    command: install --optimize-autoloader --prefer-dist
+    depends_on:
+      - php-server
+    networks:
+      - multi-tenancy
+
+  nginx:
+    build:
+      context: .
+      dockerfile: .docker/nginx/Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www/html/
+      - ./.data:/etc/data/
+    depends_on:
+      - php-server
+    networks:
+      - multi-tenancy
+
+  php-server:
+    build:
+      context: .
+      dockerfile: .docker/php/Dockerfile
+    volumes:
+      - ./:/var/www/html/
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql://admin:admin@123@db:5432/multi_tenancy
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - multi-tenancy
+
+  db:
+    build: .docker/db
+    ports:
+      - "5436:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - multi-tenancy
+
+volumes:
+  db-data:
+
+networks:
+  multi-tenancy:
+    name: multi-tenancy
+    driver: bridge

@@ -75,7 +75,7 @@ This repository provides a simple example of using the [Multi Tenancy Bundle](ht
 7. **Open the project in your browser:** [http://localhost:80](http://localhost:80)
 
     - You will see the main page with a list of features.
-      <img width="1271" alt="Screenshot 2024-08-03 at 19 41 51" src="https://github.com/user-attachments/assets/02017ce2-c10a-4aa6-b45c-e19b4974a1bd">
+      <img width="1226" alt="Screenshot 2024-08-03 at 21 35 36" src="https://github.com/user-attachments/assets/92d6b7d5-6e61-4a13-9efc-5a5125ec0dfe">
 
 
     - You can manage tenant entities and create new tenant databases.
